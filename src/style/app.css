@@ -1,0 +1,18 @@
+/* styles in src/style directory are applied to the whole page */
+body {
+  background: #fff;
+  color: #333;
+}
+
+a {
+  color: #03A9F4;
+}
+h1{
+  text-align: center;
+}
+main {
+  padding: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 50px;
+  display: block;
+}

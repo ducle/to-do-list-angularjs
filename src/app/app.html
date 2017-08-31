@@ -1,0 +1,51 @@
+<main>
+  <h1 class="title">Hello! Please add a task</h1>
+  <div class='row'>
+    <div class='col-md-4'>
+      <figure>
+        <form name="newTaskForm">
+          <div class="form-group">
+            <label for="exampleInputFile">Task name</label>
+            <input type="text" id="exampleInputFile" ng-model="app.newTask.name" ng-required="true" minlength="3">
+            <p class="help-block">name of task.</p>
+          </div>
+          <div class="checkbox">
+            <label>
+          <input type="checkbox" value="true" ng-model="app.newTask.featured"> featured?
+        </label>
+          </div>
+          <button type="submit" class="btn btn-warning" ng-click="app.addTask(); refAll=false;" ng-disabled="newTaskForm.$invalid">Add</button>
+        </form>
+      </figure>
+    </div>
+    <div class='col-md-8'>
+      <ol ng-show="app.tasks.length > 0">
+
+        <li ng-repeat="task in app.tasks">
+          <label>
+            <input type="checkbox" value="true" ng-model="task.selected">
+            {{task.name}}
+            <span ng-show="task.featured">
+              <i class='fa fa-check text-success'> </i>
+            </span>
+          </label>
+        </li>
+      </ol>
+      <p ng-hide='app.tasks.length > 0'>
+        Please add a task
+      </p>
+      <p ng-show="app.tasks.length > 0">
+        <label>
+          <input type="checkbox" value="true" ng-click="app.toggleAll(refAll)" ng-model="refAll">
+          <span ng-show="!refAll"> select</span>
+          <span ng-hide="!refAll"> unselect</span>
+          all
+        </label>
+
+        <button type="button" class="btn btn-danger" ng-click="app.removeSelected()" ng-show="app.hasSelected()">remove selected</button>
+      </p>
+
+    </div>
+  </div>
+
+</main>
